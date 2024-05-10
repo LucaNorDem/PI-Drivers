@@ -1,56 +1,31 @@
 const { Driver } = require("../db");
 const axios = require("axios");
-const { Op } = require("sequelize");
 
 const getDrivers = async (req, res) => {
-    const { name } = req.query;
-    if (!name) {
-        axios.get('http://localhost:5000/db')
-            .then(resp => {
-                const drivers = resp.data.drivers;
-                res.status(200).json(drivers);
-            })
-            .catch(error => {
-                res.status(400).json({ error: error.message });
-            });
-    } else {
+    
+    try {
 
-        try {
-            const searchQuery = name.toLowerCase();
+        const resp = await axios.get('http://localhost:5000/db')
+        const driversApi = resp.data.drivers;
 
-            //Busqueda en la api usando query
-            const resp = await axios('http://localhost:5000/db');
-            // console.log(resp.data);
-            const apiDrivers = resp.data.drivers.filter(driver => {
-                let driverName = `${driver.name.forename} ${driver.name.surname}`
-                return driverName.toLowerCase().includes(searchQuery);
-            });
+        driversApi.forEach(driver => {
+            if (!driver.image.url) {
+                driver.image.url = "https://t3.ftcdn.net/jpg/05/80/42/74/360_F_580427495_cfOCzziGletcVTsflOYuT8oJTo5PZHJK.jpg";
+            }
+        })
 
-            
+        const driversDb = await Driver.findAll();
 
+        const allDrivers = [...driversApi, ...driversDb]
 
-            //Busqueda en la db usando query
-            const dbDrivers = await Driver.findAll({
-                where: {
-                    name: {[Op.iLike]: `%${searchQuery}%`}
-                },
-                limit: 15,
-            })
+        return allDrivers;
 
-            let combinedApiDbDrivers = [...apiDrivers, ...dbDrivers];
+    } catch (error) {
 
-            combinedApiDbDrivers = combinedApiDbDrivers.slice(0, 15);
-
-            return combinedApiDbDrivers.length > 0 
-            ? res.status(200).json(combinedApiDbDrivers)
-            : res.status(404).json({message: "No driver found"}); 
-            
-        } catch (error) {
-            console.log(error);
-            return res.status(500).json({error:error.message});
-        }
+        throw new Error(error.message);
 
     }
+    
 }
 
 

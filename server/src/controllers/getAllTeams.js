@@ -18,7 +18,6 @@ const getAllTeams = async (req, res) => {
             });
             
             teams = [...new Set(teams)];
-            console.log(teams);
 
             const promises = teams.map(name => Team.findOrCreate({
                 where: { name }

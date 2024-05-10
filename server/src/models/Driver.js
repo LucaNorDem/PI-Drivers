@@ -4,14 +4,12 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Driver', {
-    id_driver: {
-      type: DataTypes.INTEGER,
+    
+    id: {
+      type: DataTypes.INTEGER,  
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false,
-    },
-    id: {
-      type: DataTypes.INTEGER,      
+      initialValue: 509,    
       allowNull: false,
     },
     name: {
