@@ -1,5 +1,6 @@
 const { Team } = require("../db");
 const axios = require("axios");
+const teamsLogos = require("../utils/teamsLogos");
 
 const getAllTeams = async (req, res) => {
 
@@ -20,13 +21,15 @@ const getAllTeams = async (req, res) => {
             teams = [...new Set(teams)];
 
             const promises = teams.map(name => Team.findOrCreate({
-                where: { name }
+                where: { name },
+                defaults: {
+                    image: teamsLogos[name],
+                }
             }));
 
             await Promise.all(promises);
 
         }else{
-            console.log(countTeams);
             teams = await Team.findAll();
         }
 
