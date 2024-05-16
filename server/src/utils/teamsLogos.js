@@ -37,7 +37,7 @@ const teamLogo = {
     "Hispania": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/HRT_F1_TEAM_2012.svg/1200px-HRT_F1_TEAM_2012.svg.png",
     "Jaguar": "https://static.wikia.nocookie.net/logopedia/images/2/20/1280px-Jaguar_Racing_%282000%29.svg.png/revision/latest/scale-to-width-down/1200?cb=20190222062045",
     "HRT": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/HRT_F1_TEAM_2012.svg/1200px-HRT_F1_TEAM_2012.svg.png",
-    "Courage Compétition": "",
+    "Courage Compétition": "https://1000marcas.net/wp-content/uploads/2020/01/logo-F1.png",
     "DAMS": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Team-Logo_DAMS023.webp",
     "Team Oreca": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnkJGcsPdmSjE-H-jXhu6GQg8uOrqNiMKHwSxPToqLBA&s",
     "Pescarolo Sport": "https://upload.wikimedia.org/wikipedia/fr/e/e7/Pescarolo_Sport_Logo.png",

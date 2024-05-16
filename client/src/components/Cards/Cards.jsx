@@ -20,7 +20,6 @@ const Cards = (props) =>{
                     />
                 )
             })}</div>
-            <h1>CARDS</h1>
         </div>
     )
 

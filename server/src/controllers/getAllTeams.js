@@ -33,11 +33,11 @@ const getAllTeams = async (req, res) => {
             teams = await Team.findAll();
         }
 
-        return res.status(200).json(teams);
+        return teams;
 
     } catch (error) {
 
-        return res.status(500).json({ error: error.message });
+        throw new Error("Something went wrong, try again later.")
 
     }
 }

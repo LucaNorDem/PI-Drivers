@@ -4,6 +4,7 @@ const driversRouter = Router();
 const getDrivers = require("../../controllers/getDrivers");
 const getDriverById = require("../../controllers/getDriverById");
 const getDriversByQuery = require("../../controllers/getDriversByQuery");
+const postDriver = require("../../controllers/postDriver");
 
 
 
@@ -50,8 +51,34 @@ driversRouter.get("/", async (req, res) =>{
 
 });
 
-driversRouter.post("/", (req, res)=>{
-    res.status(200).send("Ruta post a /drivers")
+driversRouter.post("/", async (req, res)=>{
+
+    const driver = req.body;
+
+    try {
+
+        const pDriver = await postDriver(driver);
+
+        switch (pDriver.status) {
+            case 200:
+                return res.status(200).json({ message: pDriver.message });
+
+            case 400:
+                return res.status(400).json({ message: pDriver.message });
+
+            case 409:
+                return res.status(409).json({ message: pDriver.message });
+
+            default:
+                return res.status(500).json({ message: pDriver.message });;
+        }
+
+
+    } catch (error) {
+
+        res.status(500).json({ error: error.message });
+
+    }
 })
 
 module.exports = driversRouter;
