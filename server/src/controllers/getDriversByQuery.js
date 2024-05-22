@@ -7,6 +7,7 @@ const getDriversByQuery = async (query) =>{
 
     try {
         const searchQuery = query.toLowerCase();
+        const searchWords = searchQuery.split(' ');
 
         //Busqueda en la api usando query
         const resp = await axios('http://localhost:5000/db');
@@ -16,25 +17,49 @@ const getDriversByQuery = async (query) =>{
             return driverName.toLowerCase().includes(searchQuery);
         });
 
+        const formatApiDrivers = apiDrivers.map(driver=>({           
+            id: driver.id,
+            name: `${driver.name.forename} ${driver.name.surname}`,            
+        }))
         
 
 
         //Busqueda en la db usando query
         const dbDrivers = await Driver.findAll({
             where: {
-                name: {[Op.iLike]: `%${searchQuery}%`}
+                [Op.or]:[
+                    {name: {[Op.iLike]: `%${searchQuery}%`}},
+                    {lastname: {[Op.iLike]: `%${searchQuery}%`}},
+                    {
+                        [Op.and]: searchWords.map(word => ({
+                            [Op.or]: [
+                                { name: { [Op.iLike]: `%${word}%` } },
+                                { lastname: { [Op.iLike]: `%${word}%` } }
+                            ]
+                        }))
+                    }
+
+                ]
             },
             limit: 15,
         })
+        const formatDbDrivers = dbDrivers.map((driver)=>{
 
-        //combinp ambas busquedas de api y db, luego solo obtengo los primeros 15
-        let combinedApiDbDrivers = [...apiDrivers, ...dbDrivers];
+            return {
+                id: driver.id,
+                name:`${driver.name} ${driver.lastname}`,                
+            }
+            
+        })
+
+        //combino ambas busquedas de api y db, luego solo obtengo los primeros 15
+        let combinedApiDbDrivers = [...formatApiDrivers, ...formatDbDrivers];
 
         combinedApiDbDrivers = combinedApiDbDrivers.slice(0, 15);
 
         return combinedApiDbDrivers.length > 0 
         ? combinedApiDbDrivers
-        : null; 
+        : [{id:0,name: "No driver found"}]; 
         
     } catch (error) {
 

@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 const Nav = () =>{
@@ -13,8 +14,8 @@ const Nav = () =>{
 
         <div>
             <button onClick={()=>navigate("/home")}>Home</button>
-            <button onClick={()=>navigate("/teams")}>Teams</button>
             <button onClick={()=>navigate("/about")}>About</button>
+            <SearchBar />
         </div>
     )
 
