@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
 
 
-  //usamos useEffect para hacer el dispatch que obtendra todos los drives del back y los guardara en el estado global la action
+  //usamos useEffect para hacer el dispatch que obtendra todos los drives del back y los guardara en el estado global la action.
   useEffect(() => {
 
     const loadData = async () => {
@@ -33,7 +33,7 @@ function App() {
   }, [dispatch]);
 
 
-  //La renderiza el contenido despues de terminar de cargar la info que necesaria en el estado global a traves de los dispatch del useEffect
+  //La renderiza el contenido despues de terminar de cargar la info que necesaria en el estado global a traves de los dispatch del useEffect.
   return loading ? <div>Loading...</div> : (
 
     <div>

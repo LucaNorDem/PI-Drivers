@@ -5,7 +5,7 @@ import { getDriver } from "../../redux/actions";
 
 const Card = (props) =>{
 
-    const id = Number(props.id)
+    const id = props.id
     const name = `${props.name.forename} ${props.name.surname}`
 
     const navigate = useNavigate();

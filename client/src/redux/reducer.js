@@ -1,12 +1,14 @@
-import { GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM } from "./actions";
+import { GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER } from "./actions";
 
 
 const initialState = {
     allDrivers: [],
     filteredDrivers: [],
+    currentOrder: "X",
     teams: [],
     driver: {},
     driverTeams:[],
+    postDriver: {},
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -15,17 +17,25 @@ const rootReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 allDrivers: action.payload,
+                filteredDrivers: action.payload,
             }
         }
 
         case GET_DRIVER:{
 
-            const driverTeams = action.payload.teams.split(",").map(el => el.trim());
+            let driverTeams = action.payload.teams;
 
+            if(driverTeams) {
+                driverTeams = action.payload.teams.split(",").map(el => el.trim());
+
+                driverTeams= state.teams.filter((team)=>driverTeams.includes(team.name))
+            };
+
+            
             return{
                 ...state,
                 driver: action.payload,
-                driverTeams: state.teams.filter((team)=>driverTeams.includes(team.name))
+                driverTeams: driverTeams
             }
         }
 
@@ -33,6 +43,14 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 teams:[...action.payload]
+            }
+        }
+
+        case CLEAN_FILTERS:{
+            return {
+                ...state,
+                filteredDrivers: state.allDrivers,
+                currentOrder: "X"
             }
         }
 
@@ -60,16 +78,19 @@ const rootReducer = (state = initialState, action) =>{
 
             const orderDrivers =[...state.filteredDrivers];
 
+            
+
             orderDrivers.sort((a, b)=>{
                 let aname = `${a.name.forename} ${a.name.surname}`;
                 let bname = `${b.name.forename} ${b.name.surname}`;
 
-                return action.payload === "A" ? aname.localeCompare(bname) : bname.localeCompare(aname);
+                return action.payload === "NA" ? aname.localeCompare(bname) : bname.localeCompare(aname);
                 
             }) 
             return {
                 ...state,
-                filteredDrivers: orderDrivers 
+                filteredDrivers: orderDrivers,
+                currentOrder: action.payload, 
             }
             
         }
@@ -82,12 +103,22 @@ const rootReducer = (state = initialState, action) =>{
                 let abirth = new Date(a.dob);
                 let bbirth = new Date(b.dob);
 
-                return action.payload === "A" ? abirth - bbirth : bbirth - abirth;
+                return action.payload === "BA" ? abirth - bbirth : bbirth - abirth;
                 
             }) 
             return {
                 ...state,
-                filteredDrivers: orderDrivers 
+                filteredDrivers: orderDrivers,
+                currentOrder: action.payload,  
+            }
+
+        }
+
+
+        case POST_DRIVER:{
+            return {
+                ...state,
+                postDriver: action.payload,
             }
 
         }

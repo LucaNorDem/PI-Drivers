@@ -61,13 +61,13 @@ driversRouter.post("/", async (req, res)=>{
 
         switch (pDriver.status) {
             case 200:
-                return res.status(200).json({ message: pDriver.message });
+                return res.status(200).json({ message: pDriver.message, created: pDriver.created });
 
             case 400:
-                return res.status(400).json({ message: pDriver.message });
+                return res.json({ message: pDriver.message, created: pDriver.created });
 
             case 409:
-                return res.status(409).json({ message: pDriver.message });
+                return res.json({ message: pDriver.message, created: pDriver.created });
 
             default:
                 return res.status(500).json({ message: pDriver.message });;

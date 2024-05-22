@@ -1,10 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { orderByBirth, orderByName, filterByTeam, cleanFilters } from "../../redux/actions";
 import Cards from "../Cards/Cards";
-import { getAllDrivers, getTeams, orderByBirth, orderByName, filterByTeam } from "../../redux/actions";
+import Form from "../Form/Form";
+import Modal from "../Modal/Modal";
+
 
 const Home = (props) => {
     const [aux, setAux] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
 
 
     const drivers = useSelector((state) => state.filteredDrivers);
@@ -20,33 +25,67 @@ const Home = (props) => {
         dispatch(orderByName(e.target.value));
         setAux(!aux);
     }
-    
+
     const handleOrderBirth = (e) =>{
         dispatch(orderByBirth(e.target.value));
         setAux(!aux);
     }
+
+    const handleCleanFilters = (e) =>{
+        dispatch(cleanFilters());
+        setAux(!aux);
+    }
     
+
+    const openModal = () =>{
+        setIsModalOpen(true);
+    }
+    
+    
+    const closeModal = () =>{
+        setIsModalOpen(false);
+    }
+
+
 
     return (
 
         <div>
 
             <div>
-                <div> Order by name
-                    <button value="A" onClick={handleOrderName}>↑</button>
-                    <button value="D" onClick={handleOrderName}>↓</button>
+                <div>
+                    <div>
+                        Order by name
+                        <button value="NA" onClick={handleOrderName}>↑</button>
+                        <button value="ND" onClick={handleOrderName}>↓</button>
+                    </div>
+                    <div>
+                        Order by birth
+                        <button value="BA" onClick={handleOrderBirth}>↑</button>
+                        <button value="BD" onClick={handleOrderBirth}>↓</button>
+                    </div>
+                    <div>
+                        <button value="X" onClick={handleCleanFilters}>Clean all filters</button>
+                    </div>
+
+                    <div>
+                        <select onChange={handleFilter} >
+                            <option key="0" value="All">All</option>
+                            {teams.map((team) => (
+                                <option key={team.id} value={team.name} >{team.name}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <button onClick={openModal}>Add driver</button>
+                        <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+                            <Form />
+                        </Modal>
+                    </div>
+
                 </div>
-                <div> Order by birth
-                    <button value="A" onClick={handleOrderBirth}>↑</button>
-                    <button value="D" onClick={handleOrderBirth}>↓</button>
-                </div>
-                
-                <select onChange={handleFilter} >
-                    <option value="All">All</option>
-                    {teams.map((team)=>(
-                        <option value={team.name} key={team.id}>{team.name}</option>
-                    ))}                    
-                </select>
+
             </div>
 
             {/* pasamos por props el array al componente que renderiza las cards */}

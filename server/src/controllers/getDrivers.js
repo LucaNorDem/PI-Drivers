@@ -18,14 +18,7 @@ const getDrivers = async (req, res) => {
         const formatDbDrivers = await Promise.all(driversDb.map(async(driver)=>{
 
             //traemos los teams de cada driver de la DB usando la tabla intermedia
-            const driverTeams = await driver_team.findAll({
-                where:{
-                    id:driver.id,
-                },
-                include:[Team],
-            });
-
-            const teams = driverTeams.map(t => t.Team.name);
+            const teams = await driver.getTeams();
             
 
 
@@ -40,7 +33,7 @@ const getDrivers = async (req, res) => {
                 },
                 dob: driver.birthday,
                 nationality: driver.nationality,
-                teams: teams.join(", "),
+                teams: teams.map(t => t.name).join(", "),
                 description: driver.description,
             }
         }))
@@ -50,6 +43,7 @@ const getDrivers = async (req, res) => {
         return allDrivers;
 
     } catch (error) {
+        console.log(error);
 
         throw new Error(error.message);
 
