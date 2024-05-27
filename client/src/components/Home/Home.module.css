@@ -1,0 +1,100 @@
+@font-face {
+    font-family: "f1-regular";
+    src: url(../../assets/F1-Font-Files/Formula1-Regular.otf);
+}
+@font-face {
+    font-family: "f1-bold";
+    src: url(../../assets/F1-Font-Files/Formula1-Bold.otf);
+}
+
+.homeContainer{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "f1-regular";
+    text-align: center;
+    background-color: rgb(253, 253, 253);
+}
+
+.filtersContainer{
+    padding-top: 20px;
+    padding: 5px;
+    width: 100%;
+    background-color: rgba(171, 171, 171, 0.75);
+    color: rgb(0, 0, 0);
+}
+
+
+.filterBtns{
+    padding: 2px;
+
+    button{
+        margin: 1px;
+        width: 30px;
+        font-family: "f1-regular";
+        font-size: 1em;
+        background-color:rgb(200, 0, 0);
+        color: rgb(0, 0, 0);
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+
+        &:hover{
+            cursor: pointer;
+            background-color: rgb(255, 0, 0);
+        }
+    }
+}
+
+.cleanFilterBtn{
+    padding: 2px;
+    margin: 2px;
+
+    button{
+        margin: 1px;
+        padding: 5px;
+        font-family: "f1-regular";
+        font-size: 1.1em;
+        background-color:rgb(200, 0, 0);
+        color: rgb(0, 0, 0);
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+
+        &:hover{
+            cursor: pointer;
+            background-color: rgb(255, 0, 0);
+        }
+    }
+}
+
+.teamFilter {
+    margin: 1px;
+    padding: 5px;
+    
+
+    select{
+        background-color:rgb(200, 0, 0);
+        color: rgb(0, 0, 0);
+        font-size: 1.1em;
+        font-family: "f1-regular";
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+
+        &:hover{
+            cursor: pointer;
+            background-color: rgb(255, 0, 0);
+        }
+    }
+
+    
+}
+.option{
+    color: rgb(255, 255, 255);
+    font-size: 1.1em;
+    font-family: "f1-regular";
+    background-color: rgba(200, 0, 0, 0.9);
+    border-radius: 5px;
+    cursor: pointer;
+
+    
+}

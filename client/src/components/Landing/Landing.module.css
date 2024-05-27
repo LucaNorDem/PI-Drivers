@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "f1-regular";
+    src: url(../../assets/F1-Font-Files/Formula1-Regular.otf);
+}
+@font-face {
+    font-family: "f1-bold";
+    src: url(../../assets/F1-Font-Files/Formula1-Bold.otf);
+}
+@font-face {
+    font-family: "f1-wide";
+    src: url(../../assets/F1-Font-Files/Formula1-Wide.otf);
+}
+
+
+.landingContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.h1{
+    font-family: "f1-bold";
+    font-size: 3.5em;
+}
+
+.btn{
+    font-family: "f1-bold";
+    font-size: 2em;
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 5px 30px;
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgb(180, 180, 180);;
+    }
+}

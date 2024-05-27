@@ -95,33 +95,33 @@ const Form = () =>{
 
     return (
 
-        <div>
+        <div className={style.formContainer}>
             
             <div>
                 <h2>Add new driver</h2>
                 <form className={style.formBody} action="" onSubmit={handleSubmit}>
                     <label htmlFor="">Name*</label>
-                    <input type="text" name="name" value={data.name} onChange={handleChange} />
+                    <input className={style.formInput} type="text" name="name" value={data.name} onChange={handleChange} />
 
                     <label htmlFor="">Lastname*</label>
-                    <input type="text" name="lastname" value={data.lastname} onChange={handleChange} />
+                    <input className={style.formInput} type="text" name="lastname" value={data.lastname} onChange={handleChange} />
 
                     <label htmlFor="">Nationality*</label>
-                    <input type="text" name="nationality" value={data.nationality} onChange={handleChange} />
+                    <input className={style.formInput} type="text" name="nationality" value={data.nationality} onChange={handleChange} />
 
                     <label htmlFor="">Birthday*</label>
-                    <input type="date" name="birthday" value={data.birthday} onChange={handleChange} />
+                    <input className={style.formInput} type="date" name="birthday" value={data.birthday} onChange={handleChange} />
 
                     <label htmlFor="">Image</label>
-                    <input type="file" name="image" onChange={handleFileChange} />
+                    <input className={style.formInput} type="file" name="image" onChange={handleFileChange} />
 
                     <label htmlFor="">Teams</label>
 
                     <button type="button" onClick={() => setIsModalOpen(true)}>Add team</button>
-                    <ul>
+                    <ul className={style.teams}>
                         {data.teams.map((team, index) => {
                             return (
-                                <div key={index}>
+                                <div className={style.teamDiv} key={index}>
                                     <li >{team}</li>
                                     <button value={team} onClick={deleteTeam}>x</button>
                                 </div>
@@ -132,7 +132,7 @@ const Form = () =>{
 
                     <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
                         <h3>Select a team</h3>
-                        <select onChange={handleAddTeams}>
+                        <select className={style.teamSelect} onChange={handleAddTeams}>
                             <option value="">Select team</option>
                             {availableTeams.map((team, index) => (
                                 <option key={index} value={team.name}>{team.name}</option>

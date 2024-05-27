@@ -1,0 +1,13 @@
+
+
+.cardsHomeContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardsResultsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

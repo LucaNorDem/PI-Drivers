@@ -4,6 +4,7 @@ import { orderByBirth, orderByName, filterByTeam, cleanFilters } from "../../red
 import Cards from "../Cards/Cards";
 import Form from "../Form/Form";
 import Modal from "../Modal/Modal";
+import style from "./Home.module.css";
 
 
 const Home = (props) => {
@@ -50,35 +51,35 @@ const Home = (props) => {
 
     return (
 
-        <div>
+        <div className={style.homeContainer} >
 
-            <div>
+            <div className={style.filtersContainer} >
                 <div>
-                    <div>
-                        Order by name
-                        <button value="NA" onClick={handleOrderName}>↑</button>
-                        <button value="ND" onClick={handleOrderName}>↓</button>
+                    <div className={style.filterBtns}>
+                        Order by name:&nbsp;
+                        <button value="NA" onClick={handleOrderName}>↓</button>
+                        <button value="ND" onClick={handleOrderName}>↑</button>
                     </div>
-                    <div>
-                        Order by birth
-                        <button value="BA" onClick={handleOrderBirth}>↑</button>
-                        <button value="BD" onClick={handleOrderBirth}>↓</button>
+                    <div className={style.filterBtns}>
+                        Order by birth:&nbsp;
+                        <button value="BA" onClick={handleOrderBirth}>↓</button>
+                        <button value="BD" onClick={handleOrderBirth}>↑</button>
                     </div>
-                    <div>
+                    <div className={style.cleanFilterBtn}>
                         <button value="X" onClick={handleCleanFilters}>Clean all filters</button>
                     </div>
 
-                    <div>
+                    <div className={style.teamFilter}>
                         <select onChange={handleFilter} >
-                            <option key="0" value="All">All</option>
+                            <option className={style.option} key="0" value="All">All</option>
                             {teams.map((team) => (
-                                <option key={team.id} value={team.name} >{team.name}</option>
+                                <option className={style.option} key={team.id} value={team.name} >{team.name}</option>
                             ))}
                         </select>
                     </div>
 
-                    <div>
-                        <button onClick={openModal}>Add driver</button>
+                    <div className={style.cleanFilterBtn}>
+                        <button onClick={openModal}>Add new driver</button>
                         <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
                             <Form />
                         </Modal>

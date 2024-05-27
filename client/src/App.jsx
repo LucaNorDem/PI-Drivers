@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Routes, Route } from "react-router-dom"
 import { getAllDrivers, getTeams, filterByTeam } from "./redux/actions";
-import './App.css'
 import LandingView from "./views/LandingView"
 import HomeView from "./views/HomeView"
 import DetailsView from "./views/DetailsView"
-import FormView from "./views/FormView"
 import AboutView from "./views/AboutView"
 import Nav from "./components/Nav/Nav"
+import ResultsView from "./views/ResultsView"
 
 function App() {
 
@@ -42,8 +41,8 @@ function App() {
         <Route path="/" element={<LandingView />} />
         <Route path="/home" element={<HomeView />} />
         <Route path="/details" element={<DetailsView />} />
-        <Route path="/form" element={<FormView />} />
-        <Route path="/About" element={<AboutView />} />
+        <Route path="/about" element={<AboutView />} />
+        <Route path="/results" element={<ResultsView />} />
       </Routes>
 
     </div>

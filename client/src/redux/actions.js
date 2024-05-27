@@ -10,7 +10,7 @@ const FILTER_BY_TEAM = "FILTER_BY_TEAM";
 const CLEAN_FILTERS = "CLEAN_FILTERS";
 const POST_DRIVER = "POST_DRIVER";
 const SEARCH_DRIVERS = "SEARCH_DRIVERS";
-const CLEAN_SEARCH = "CLEAN_SEARCH";
+const UPDATE_SEARCH = "UPDATE_SEARCH";
 
 
 const getAllDrivers = () => {
@@ -128,7 +128,7 @@ const searchDrivers = (search) =>{
     return async (dispatch) => {
         try {
             const searchDrivers = await axios(`${endpoint}?name=${search}`);
-
+            
             dispatch({
                 type:SEARCH_DRIVERS,
                 payload: searchDrivers.data,
@@ -139,14 +139,14 @@ const searchDrivers = (search) =>{
     }
 }
 
-const cleanSearch = () =>{
+const updateSearch = () =>{
     return {
-        type: CLEAN_SEARCH,
+        type: UPDATE_SEARCH,
     }
 }
 
 
 export {
-    getAllDrivers, getDriver, orderByName, orderByBirth, filterByTeam, getTeams, cleanFilters, postDriver, searchDrivers, cleanSearch,
-    GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER, SEARCH_DRIVERS, CLEAN_SEARCH
+    getAllDrivers, getDriver, orderByName, orderByBirth, filterByTeam, getTeams, cleanFilters, postDriver, searchDrivers, updateSearch,
+    GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER, SEARCH_DRIVERS, UPDATE_SEARCH
 };
