@@ -23,6 +23,7 @@
     width: 100%;
     background-color: rgba(171, 171, 171, 0.75);
     color: rgb(0, 0, 0);
+    border-bottom: 1px solid black;
 }
 
 
@@ -111,6 +112,7 @@
         width:20%;
         height: 93vh;
         border-right: 1px solid black;
+        border-bottom: none;
     }
 
     .filterBtns{

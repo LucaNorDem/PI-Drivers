@@ -11,6 +11,7 @@ const CLEAN_FILTERS = "CLEAN_FILTERS";
 const POST_DRIVER = "POST_DRIVER";
 const SEARCH_DRIVERS = "SEARCH_DRIVERS";
 const UPDATE_SEARCH = "UPDATE_SEARCH";
+const ERROR = "ERROR";
 
 
 const getAllDrivers = () => {
@@ -20,12 +21,17 @@ const getAllDrivers = () => {
         try {
             const allDrivers = await axios(endpoint);
 
+
             dispatch({
                 type: GET_ALL_DRIVERS,
                 payload: allDrivers.data
             })
-        } catch (error) {
 
+        } catch (error) {
+            dispatch({
+                type:ERROR,
+                payload: error,
+            })
         }
     }
 
@@ -43,7 +49,10 @@ const getDriver = (id) => {
                 payload: driver.data
             })
         } catch (error) {
-
+            dispatch({
+                type:ERROR,
+                payload: error,
+            })
         }
     }
 
@@ -61,7 +70,10 @@ const getTeams = () => {
                 payload: teams.data,
             })
         } catch (error) {
-
+            dispatch({
+                type:ERROR,
+                payload: error,
+            })
         }
     }
 }
@@ -117,7 +129,10 @@ const postDriver = (driver) => {
             })
 
         } catch (error) {
-
+            dispatch({
+                type:ERROR,
+                payload: error,
+            })
         }
     }
 }
@@ -134,7 +149,10 @@ const searchDrivers = (search) =>{
                 payload: searchDrivers.data,
             })
         } catch (error) {
-            
+            dispatch({
+                type:ERROR,
+                payload: error,
+            })
         }
     }
 }
@@ -148,5 +166,5 @@ const updateSearch = () =>{
 
 export {
     getAllDrivers, getDriver, orderByName, orderByBirth, filterByTeam, getTeams, cleanFilters, postDriver, searchDrivers, updateSearch,
-    GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER, SEARCH_DRIVERS, UPDATE_SEARCH
+    GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER, SEARCH_DRIVERS, UPDATE_SEARCH, ERROR
 };

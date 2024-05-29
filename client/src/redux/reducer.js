@@ -1,4 +1,15 @@
-import { GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER, SEARCH_DRIVERS, UPDATE_SEARCH } from "./actions";
+import {
+    GET_ALL_DRIVERS,
+    GET_DRIVER, GET_TEAMS,
+    ORDER_NAME,
+    ORDER_BIRTH,
+    FILTER_BY_TEAM,
+    CLEAN_FILTERS,
+    POST_DRIVER,
+    SEARCH_DRIVERS,
+    UPDATE_SEARCH,
+    ERROR
+} from "./actions";
 
 
 const initialState = {
@@ -11,6 +22,10 @@ const initialState = {
     postDriver: {},
     searchBarResults: [],
     searchResults: [],
+    error: {
+        status: null,
+        message: null,
+    },
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -137,6 +152,16 @@ const rootReducer = (state = initialState, action) =>{
             return{ 
                 ...state,
                 searchResults: state.searchBarResults,
+            }
+        }
+
+        case ERROR:{
+            return{
+                ...state,
+                error:{
+                    status: action.payload.status,
+                    message:action.payload.message,
+                }
             }
         }
 

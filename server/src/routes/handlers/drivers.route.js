@@ -17,10 +17,10 @@ driversRouter.get("/:id", async (req, res)=>{
         if(driver){
             res.status(200).json(driver);
         }else if (driver === null){
-            res.status(404).json({error: "No driver found"});
+            res.status(404).json({message: "No driver found"});
         }
     } catch (error) {
-        res.status(500).json({error: error.message});
+        res.status(500).json({message: error.message});
     }
     
 })
@@ -41,11 +41,11 @@ driversRouter.get("/", async (req, res) =>{
         if(drivers){
             res.status(200).json(drivers);
         }else{
-            res.status(404).json({error: "No driver found"});
+            res.status(404).json({message: "No driver found"});
         }
 
     } catch (error) {
-        res.status(500).json({error: error.message});
+        res.status(500).json({message: error.message});
     }
     
 
@@ -64,10 +64,10 @@ driversRouter.post("/", async (req, res)=>{
                 return res.status(200).json({ message: pDriver.message, created: pDriver.created });
 
             case 400:
-                return res.json({ message: pDriver.message, created: pDriver.created });
+                return res.status(400).json({ message: pDriver.message, created: pDriver.created });
 
             case 409:
-                return res.json({ message: pDriver.message, created: pDriver.created });
+                return res.status(409).json({ message: pDriver.message, created: pDriver.created });
 
             default:
                 return res.status(500).json({ message: pDriver.message });;
