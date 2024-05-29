@@ -4,6 +4,7 @@
 }
 
 
+
 .navContainer{
     display: flex;
     flex-direction: column;
@@ -34,6 +35,26 @@
         &:hover{
             cursor: pointer;
             background-color: rgb(25, 25, 25);
+        }
+    }
+}
+
+
+@media (min-width: 720px){    
+    
+    .navContainer{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .btns{
+        flex-direction: row;
+
+
+        button{
+            height: 60px;
+            width:100px;
+            margin: 0;
         }
     }
 }

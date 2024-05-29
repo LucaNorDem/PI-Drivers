@@ -54,16 +54,22 @@ const Home = (props) => {
         <div className={style.homeContainer} >
 
             <div className={style.filtersContainer} >
-                <div>
+                <div className={style.filters} >
                     <div className={style.filterBtns}>
                         Order by name:&nbsp;
-                        <button value="NA" onClick={handleOrderName}>↓</button>
-                        <button value="ND" onClick={handleOrderName}>↑</button>
+                        <div>
+                            <button value="NA" onClick={handleOrderName}>↓</button>
+                            <button value="ND" onClick={handleOrderName}>↑</button>
+                        </div>
+                        
                     </div>
                     <div className={style.filterBtns}>
                         Order by birth:&nbsp;
-                        <button value="BA" onClick={handleOrderBirth}>↓</button>
-                        <button value="BD" onClick={handleOrderBirth}>↑</button>
+                        <div>
+                            <button value="BA" onClick={handleOrderBirth}>↓</button>
+                            <button value="BD" onClick={handleOrderBirth}>↑</button>
+                        </div>
+                        
                     </div>
                     <div className={style.cleanFilterBtn}>
                         <button value="X" onClick={handleCleanFilters}>Clean all filters</button>
@@ -90,7 +96,7 @@ const Home = (props) => {
             </div>
 
             {/* pasamos por props el array al componente que renderiza las cards */}
-            <div>
+            <div className={style.cardsContainer}>
                 <Cards drivers={drivers} />
             </div>
         </div>

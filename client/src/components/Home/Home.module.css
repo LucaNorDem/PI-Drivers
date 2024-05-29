@@ -98,3 +98,48 @@
 
     
 }
+
+
+
+@media (min-width: 720px){
+    .homeContainer{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .filtersContainer{
+        width:20%;
+        height: 93vh;
+        border-right: 1px solid black;
+    }
+
+    .filterBtns{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .teamFilter{
+
+        select{
+            width:100%;
+        }
+
+    }
+
+    .cardsContainer{
+
+        margin-top: 30px;
+        
+    }
+
+    .filters{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 40%;
+        padding-top: 40px;
+
+    }
+
+    
+}

@@ -1,12 +1,13 @@
-import Card from "../Card/Card"
+import Card from "../Card/Card";
+import style from "./Pages.module.css"
 
 const Pages = (props) => {
 
 
 
     return (
-        <div>
-            <div>{props.drivers.map((driver) => {
+        <div className={style.pageContainer} > 
+            <div className={style.cardsContainer} >{props.drivers.map((driver) => {
                 return (
                     <Card
                         id={driver.id}

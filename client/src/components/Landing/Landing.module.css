@@ -18,7 +18,10 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
+}
 
+.img{
+    width: 300px;
 }
 
 .h1{
@@ -32,9 +35,10 @@
     border-radius: 10px;
     border: 1px solid;
     padding: 5px 30px;
+    background-color: rgb(200, 0, 0);
 
     &:hover{
         cursor: pointer;
-        background-color: rgb(180, 180, 180);;
+        background-color: rgb(255, 0, 0);;
     }
 }

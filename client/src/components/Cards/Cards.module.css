@@ -11,3 +11,11 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+@media (min-width: 720px){
+
+    .cardsHomeContainer{
+        height: 90vh;
+        justify-content: space-between;
+    }
+}

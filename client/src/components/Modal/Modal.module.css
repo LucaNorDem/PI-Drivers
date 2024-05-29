@@ -33,3 +33,10 @@
         transform: scale(1.1);
     }
 }
+
+@media (min-width: 720px){
+
+    .modalContent{
+        width: 50%;        
+    }
+}

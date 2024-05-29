@@ -1,0 +1,19 @@
+
+.pageContainer{
+    display: flex;
+
+}
+
+
+
+
+@media (min-width: 720px){
+    .cardsContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    
+    
+    }
+
+}

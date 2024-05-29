@@ -42,3 +42,20 @@
         background-color: rgb(255, 0, 0);
     }
 }
+
+@media (min-width: 720px){
+
+    .formBody{
+        align-items: center;
+    }
+
+    .formInput{
+
+        width: 60%;
+    }
+
+    .teams{
+        margin: 10px 0px;
+        width: 60%;
+    }
+}

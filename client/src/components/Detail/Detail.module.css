@@ -36,6 +36,7 @@
 
     img{
         width: 300px;
+        
     }
 }
 
@@ -83,5 +84,20 @@ hr{
 
     h3{
         font-family: "f1-bold";
+    }
+}
+
+
+@media (min-width: 720px){
+
+    .driverInfo{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .descInfo{
+
+        margin: 10px 70px;
     }
 }
