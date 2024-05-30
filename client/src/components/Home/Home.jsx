@@ -5,6 +5,7 @@ import Cards from "../Cards/Cards";
 import Form from "../Form/Form";
 import Modal from "../Modal/Modal";
 import style from "./Home.module.css";
+import { useNavigate } from "react-router-dom";
 
 
 const Home = (props) => {
@@ -15,7 +16,16 @@ const Home = (props) => {
 
     const drivers = useSelector((state) => state.filteredDrivers);
     const teams = useSelector((state)=> state.teams);
+    const error = useSelector((state)=> state.error);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(error.status === 500){
+            navigate("/error", {state:{error:error}});
+        }
+    },[error, navigate])
+
 
     const handleFilter = (e) =>{
         dispatch(filterByTeam(e.target.value));

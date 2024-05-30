@@ -8,6 +8,7 @@ import DetailsView from "./views/DetailsView"
 import AboutView from "./views/AboutView"
 import Nav from "./components/Nav/Nav"
 import ResultsView from "./views/ResultsView"
+import ErrorView from './views/ErrorView';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/details" element={<DetailsView />} />
         <Route path="/about" element={<AboutView />} />
         <Route path="/results" element={<ResultsView />} />
+        <Route path="/error" element={<ErrorView />} />
       </Routes>
 
     </div>

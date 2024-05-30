@@ -55,7 +55,7 @@ const postDriver = async (driver) =>{
         
     } catch (error) {
 
-        throw new Error("Something went wrong, try again later.");
+        throw new Error("Something went wrong, try again later");
 
     }
 

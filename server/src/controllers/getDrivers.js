@@ -43,9 +43,8 @@ const getDrivers = async (req, res) => {
         return allDrivers;
 
     } catch (error) {
-        console.log(error);
 
-        throw new Error(error.message);
+        throw new Error("Something went wrong, try again later");
 
     }
     

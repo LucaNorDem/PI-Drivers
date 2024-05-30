@@ -67,11 +67,11 @@ const getDriversByQuery = async (query) =>{
 
         return combinedApiDbDrivers.length > 0 
         ? combinedApiDbDrivers
-        : [{id:0,name: "No driver found"}]; 
+        : [{id:0, status: 404, name: "No driver found"}]; 
         
     } catch (error) {
 
-        throw new Error(error.message);
+        throw new Error("Something went wrong, try again later");
         
     }
 

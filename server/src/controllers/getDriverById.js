@@ -3,7 +3,6 @@ const axios = require("axios");
 
 
 const getDriverById = async (id) =>{
-    console.log(id);
 
     try {
 
@@ -44,7 +43,7 @@ const getDriverById = async (id) =>{
         
         
     } catch (error) {
-        throw new Error("Something went wrong...");
+        throw new Error("Something went wrong, try again later");
     }
 
 }

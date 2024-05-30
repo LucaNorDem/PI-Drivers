@@ -8,7 +8,8 @@ import {
     POST_DRIVER,
     SEARCH_DRIVERS,
     UPDATE_SEARCH,
-    ERROR
+    ERROR,
+    CLEAR_ERRORS,
 } from "./actions";
 
 
@@ -35,6 +36,7 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 allDrivers: action.payload,
                 filteredDrivers: action.payload,
+                
             }
         }
 
@@ -52,14 +54,16 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 driver: action.payload,
-                driverTeams: driverTeams
+                driverTeams: driverTeams,
+                
             }
         }
 
         case GET_TEAMS:{
             return{
                 ...state,
-                teams:[...action.payload]
+                teams:[...action.payload],
+                
             }
         }
 
@@ -136,22 +140,42 @@ const rootReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 postDriver: action.payload,
+                
             }
 
         }
 
         case SEARCH_DRIVERS:{
-
-            return{
+            
+            return {
                 ...state,
-                searchBarResults: action.payload,
-            }
+                searchBarResults: action.payload,                    
+            } 
+            
+            
         }
 
-        case UPDATE_SEARCH:{
-            return{ 
-                ...state,
-                searchResults: state.searchBarResults,
+        case UPDATE_SEARCH: {
+            const result = state.searchBarResults[0];
+
+            if (result.status === 404) {
+                return {
+                    ...state,
+                    error: {
+                        status: result.status,
+                        message: result.name,
+                    },
+                    searchResults: state.searchBarResults,
+                }
+            } else {
+                return {
+                    ...state,
+                    searchResults: state.searchBarResults,
+                    error: {
+                        status: null,
+                        message: null,
+                    },
+                }
             }
         }
 
@@ -159,9 +183,19 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 error:{
-                    status: action.payload.status,
-                    message:action.payload.message,
+                    status: action.payload.response.status,
+                    message:action.payload.response.data.message,
                 }
+            }
+        }
+
+        case CLEAR_ERRORS:{
+            return{
+                ...state,
+                error: {
+                    status: null,
+                    message: null,
+                },
             }
         }
 

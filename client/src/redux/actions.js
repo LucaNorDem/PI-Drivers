@@ -12,6 +12,7 @@ const POST_DRIVER = "POST_DRIVER";
 const SEARCH_DRIVERS = "SEARCH_DRIVERS";
 const UPDATE_SEARCH = "UPDATE_SEARCH";
 const ERROR = "ERROR";
+const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 
 const getAllDrivers = () => {
@@ -21,17 +22,14 @@ const getAllDrivers = () => {
         try {
             const allDrivers = await axios(endpoint);
 
-
+            dispatch(clearErrors());
             dispatch({
                 type: GET_ALL_DRIVERS,
                 payload: allDrivers.data
             })
 
         } catch (error) {
-            dispatch({
-                type:ERROR,
-                payload: error,
-            })
+            dispatch(setError(error));
         }
     }
 
@@ -44,15 +42,13 @@ const getDriver = (id) => {
         try {
             const driver = await axios(endpoint);
 
+            dispatch(clearErrors());
             dispatch({
                 type: GET_DRIVER,
                 payload: driver.data
             })
         } catch (error) {
-            dispatch({
-                type:ERROR,
-                payload: error,
-            })
+            dispatch(setError(error));
         }
     }
 
@@ -65,15 +61,13 @@ const getTeams = () => {
         try {
             const teams = await axios(endpoint);
 
+            dispatch(clearErrors());
             dispatch({
                 type: GET_TEAMS,
                 payload: teams.data,
             })
         } catch (error) {
-            dispatch({
-                type:ERROR,
-                payload: error,
-            })
+            dispatch(setError(error));
         }
     }
 }
@@ -123,16 +117,14 @@ const postDriver = (driver) => {
         try {
             const postDriver = await axios.post(endpoint, driver);
 
+            dispatch(clearErrors());
             dispatch({
                 type: POST_DRIVER,
                 payload: postDriver.data,
             })
 
         } catch (error) {
-            dispatch({
-                type:ERROR,
-                payload: error,
-            })
+            dispatch(setError(error));
         }
     }
 }
@@ -143,16 +135,16 @@ const searchDrivers = (search) =>{
     return async (dispatch) => {
         try {
             const searchDrivers = await axios(`${endpoint}?name=${search}`);
-            
+
             dispatch({
                 type:SEARCH_DRIVERS,
                 payload: searchDrivers.data,
             })
+
         } catch (error) {
-            dispatch({
-                type:ERROR,
-                payload: error,
-            })
+
+            dispatch(setError(error));
+
         }
     }
 }
@@ -163,8 +155,21 @@ const updateSearch = () =>{
     }
 }
 
+const setError = (error) =>{
+    return{
+        type:ERROR,
+        payload: error,
+    }
+}
+
+const clearErrors = () =>{
+    return{
+        type:CLEAR_ERRORS,
+    }
+}
+
 
 export {
     getAllDrivers, getDriver, orderByName, orderByBirth, filterByTeam, getTeams, cleanFilters, postDriver, searchDrivers, updateSearch,
-    GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER, SEARCH_DRIVERS, UPDATE_SEARCH, ERROR
+    GET_ALL_DRIVERS, GET_DRIVER, GET_TEAMS, ORDER_NAME, ORDER_BIRTH, FILTER_BY_TEAM, CLEAN_FILTERS, POST_DRIVER, SEARCH_DRIVERS, UPDATE_SEARCH, ERROR, CLEAR_ERRORS
 };

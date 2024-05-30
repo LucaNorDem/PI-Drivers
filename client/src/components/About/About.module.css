@@ -15,10 +15,17 @@
 
 .infoContainer{
     max-width: 1400px;
+
+    h1{
+        font-size: 5em;
+    }
+    p{
+        font-size: 2em;
+    }
 }
 
 .git{
-    margin-right: 3px;
+    margin: 0px 3px;
     background-image: url("https://cdn-icons-png.flaticon.com/512/25/25231.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -28,8 +35,18 @@
 }
 
 .instagram{
-    margin-left: 3px;
+    margin: 0px 3px;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.linkedin{
+    margin: 0px 3px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png");
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
