@@ -9,13 +9,19 @@ const TeamModel = require("./models/Team");
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,
+  DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY,
 } = process.env;
 
-const database = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`, {
+// const database = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`, {
+//   logging: false, 
+//   native: false, 
+// });
+const database = new Sequelize(DB_DEPLOY, {
   logging: false, 
   native: false, 
 });
+
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
