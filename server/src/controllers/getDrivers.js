@@ -29,7 +29,7 @@ const getDrivers = async (req, res) => {
                     surname: driver.lastname
                 },
                 image:{
-                    url: driver.image,
+                    url: driver.image || "https://t3.ftcdn.net/jpg/05/80/42/74/360_F_580427495_cfOCzziGletcVTsflOYuT8oJTo5PZHJK.jpg",
                 },
                 dob: driver.birthday,
                 nationality: driver.nationality,

@@ -9,12 +9,13 @@ import AboutView from "./views/AboutView"
 import Nav from "./components/Nav/Nav"
 import ResultsView from "./views/ResultsView"
 import ErrorView from './views/ErrorView';
+import style from "./App.module.css";
 
 function App() {
 
 
   const [loading, setLoading] = useState(true);
-  const error = useSelector((state)=> state.error);
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,22 +43,29 @@ function App() {
 
 
   //La renderiza el contenido despues de terminar de cargar la info que necesaria en el estado global a traves de los dispatch del useEffect.
-  return loading ? <div>Loading...</div> : (
-
-    <div>
-
-      <Nav />
-      <Routes>
-        <Route path="/" element={<LandingView />} />
-        <Route path="/home" element={<HomeView />} />
-        <Route path="/details" element={<DetailsView />} />
-        <Route path="/about" element={<AboutView />} />
-        <Route path="/results" element={<ResultsView />} />
-        <Route path="/error" element={<ErrorView />} />
-      </Routes>
-
+  return loading
+    ? <div className={style.loading} >
+      <img className={style.loadImg} src="https://d3nv2arudvw7ln.cloudfront.net/staticfolder/Tyre/resources/img/red-parentesi.png" alt="" />
+      <p>
+        Loading...
+      </p>
     </div>
-  )
+    : (
+
+      <div>
+
+        <Nav />
+        <Routes>
+          <Route path="/" element={<LandingView />} />
+          <Route path="/home" element={<HomeView />} />
+          <Route path="/details" element={<DetailsView />} />
+          <Route path="/about" element={<AboutView />} />
+          <Route path="/results" element={<ResultsView />} />
+          <Route path="/error" element={<ErrorView />} />
+        </Routes>
+
+      </div>
+    )
 }
 
 export default App

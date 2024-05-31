@@ -34,7 +34,7 @@ const SearchBar = () =>{
         const element = e.target;
         const name = element.getAttribute("name")
 
-        if(id !== 0){
+        if(Number(id) !== 0){
             dispatch(getDriver(id));
             navigate(`/details?name=${name}`);
             clearInput(); 
