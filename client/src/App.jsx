@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { Routes, Route } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { getAllDrivers, getTeams, filterByTeam } from "./redux/actions";
 import LandingView from "./views/LandingView"
 import HomeView from "./views/HomeView"
@@ -14,7 +14,9 @@ function App() {
 
 
   const [loading, setLoading] = useState(true);
+  const error = useSelector((state)=> state.error);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   //usamos useEffect para hacer el dispatch que obtendra todos los drives del back y los guardara en el estado global la action.
@@ -30,6 +32,13 @@ function App() {
     loadData();
 
   }, [dispatch]);
+
+  useEffect(() => {
+    if (error.status === 500) {
+      navigate("/error", { state: { error: error } });
+    }
+  }, [error])
+
 
 
   //La renderiza el contenido despues de terminar de cargar la info que necesaria en el estado global a traves de los dispatch del useEffect.
