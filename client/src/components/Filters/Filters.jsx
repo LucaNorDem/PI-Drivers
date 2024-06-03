@@ -14,7 +14,6 @@ const Filters = () => {
 
     const handleFilter = (e) =>{
         dispatch(filterByTeam(e.target.value));
-
     }
 
     const handleOrderName = (e) =>{
@@ -49,16 +48,13 @@ const Filters = () => {
                 </div>
 
             </div>
+
             <div className={style.filterBtns}>
                 Order by birth:&nbsp;
                 <div>
                     <button value="BA" onClick={handleOrderBirth}>↓</button>
                     <button value="BD" onClick={handleOrderBirth}>↑</button>
                 </div>
-
-            </div>
-            <div className={style.cleanFilterBtn}>
-                <button value="X" onClick={handleCleanFilters}>Clean all filters</button>
             </div>
 
             <div className={style.teamFilter}>
@@ -70,6 +66,10 @@ const Filters = () => {
                 </select>
             </div>
              
+            <div className={style.cleanFilterBtn}>
+                <button value="X" onClick={handleCleanFilters}>Clean all filters</button>
+            </div>
+
             <div className={style.cleanFilterBtn}>
                 <button onClick={openModal}>Add new driver</button>
                 <Modal isOpen={isModalOpen} onRequestClose={closeModal}>

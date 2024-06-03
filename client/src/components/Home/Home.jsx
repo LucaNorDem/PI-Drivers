@@ -1,14 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useState  } from "react";
-import { orderByBirth, orderByName, filterByTeam, cleanFilters } from "../../redux/actions";
+import { useSelector } from "react-redux";
 import Cards from "../Cards/Cards";
-import Form from "../Form/Form";
-import Modal from "../Modal/Modal";
 import Filters from "../Filters/Filters";
 import style from "./Home.module.css";
 
 
-const Home = (props) => {
+const Home = () => {
 
     const drivers = useSelector((state) => state.filteredDrivers);
 
