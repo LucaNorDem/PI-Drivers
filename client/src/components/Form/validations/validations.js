@@ -5,16 +5,16 @@ const validations = (inputs) =>{
     const errors = {};
 
     if(!inputs.name){
-        errors.name = "Name filed can't be empty."
+        errors.name = "Name field can't be empty."
     }
     if(!inputs.lastname){
-        errors.lastname = "Lastname filed can't be empty."
+        errors.lastname = "Lastname field can't be empty."
     }
     if(!inputs.nationality){
-        errors.nationality = "Nationality filed can't be empty."
+        errors.nationality = "Nationality field can't be empty."
     }
     if(!inputs.birthday){
-        errors.birthday = "Birthday filed can't be empty."
+        errors.birthday = "Birthday field can't be empty."
     }
 
     return errors;

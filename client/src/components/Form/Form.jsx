@@ -67,11 +67,13 @@ const Form = () =>{
     }
 
     const deleteTeam = (e) =>{
+        e.preventDefault();
+        
         const team = e.target.value;
 
         setData({
             ...data,
-            teams: teams.filter(t => !team),
+            teams: data.teams.filter(t => t !== team),
         })
     }
 
@@ -123,7 +125,7 @@ const Form = () =>{
                             return (
                                 <div className={style.teamDiv} key={index}>
                                     <li >{team}</li>
-                                    <button value={team} onClick={deleteTeam}>x</button>
+                                    <button type="button" value={team} onClick={deleteTeam}>x</button>
                                 </div>
                             
                             )

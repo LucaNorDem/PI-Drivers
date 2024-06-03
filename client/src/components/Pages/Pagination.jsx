@@ -6,7 +6,7 @@ const Pagination = ({driversPerPage, totalDrivers, paginate, currentPage}) =>{
     const maxButtons = 6;
 
 
-    for(let i = 1; i <= Math.ceil(totalDrivers / driversPerPage); i++){
+    for(let i = 1; i <= totalPages; i++){
         pageNumbers.push(i);
     }
 
