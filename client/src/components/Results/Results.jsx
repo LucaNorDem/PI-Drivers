@@ -13,8 +13,10 @@ const Results = () =>{
             <p>{error.message}</p>
         </div>
     :(
-        <div>
-            <Cards drivers={searchReasult} />
+        <div className={style.resultsContainer}>            
+            <div className={style.cardsContainer}>                
+                <Cards drivers={searchReasult} />
+            </div>
         </div>
     )
 

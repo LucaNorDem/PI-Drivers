@@ -7,6 +7,17 @@
     src: url(../../assets/F1-Font-Files/Formula1-Bold.otf);
 }
 
+.resultsContainer{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "f1-regular";
+    text-align: center;
+    background-color: rgb(253, 253, 253);
+}
+
+
 .error{
     display: flex;
     flex-direction: column;
@@ -20,5 +31,21 @@
     p{
         font-family: "f1-regular";
         font-size: 2em;
+    }
+}
+
+
+
+@media (min-width: 720px){
+    
+    .resultsContainer{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .cardsContainer{
+        width: 100%;
+        margin-top: 30px;
+        
     }
 }

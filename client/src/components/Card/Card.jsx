@@ -17,7 +17,7 @@ const Card = (props) =>{
 
     const handleClick = () =>{
         dispatch(getDriver(id));
-        navigate(`/details?name=${name}`);
+        navigate(`/details?name=${name.replace(" ", "-")}`);
     }
 
     return (
