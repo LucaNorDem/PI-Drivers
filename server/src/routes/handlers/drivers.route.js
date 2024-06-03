@@ -70,7 +70,7 @@ driversRouter.post("/", async (req, res)=>{
                 return res.status(409).json({ message: pDriver.message, created: pDriver.created });
 
             default:
-                return res.status(500).json({ message: pDriver.message });;
+                return res.status(500).json({ message: pDriver.message });
         }
 
 
